@@ -13,9 +13,19 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
 
-
-
-
+  def self.looks(search, word)
+    if search  ==  "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?", "#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?", "%#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?", "%#{word}%")
+    else
+      @user = User.all
+    end 
+  end  
 
 
   def follow(user_id)
