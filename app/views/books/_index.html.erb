@@ -20,14 +20,15 @@
         <td><%= link_to  search_path(word: book.category) do %>
         <%= book.category%><% end %>
         </td>
-        
-        
-        
-        <td id="favorite_buttons_<%= book.id %>">
 
+
+
+
+        <td id="favorite_buttons_<%= book.id %>">
+        <%= render "favorites/favorite", book: book %>
         </td>
         <td id="star-rate<%= book.id%>"></>
-        
+
     <script>
       $('#star-rate<%= book.id%>').raty({
         size      : 36,
