@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "home/about"=>"homes#about"
   get "search" => "searches#search"
   get 'chat/:id', to: 'chats#show', as: 'chat'
+  
   resources :chats, only: [:create]
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
@@ -20,7 +21,9 @@ Rails.application.routes.draw do
     get "followings" => "relationships#followings", as: "followings"
     get "followers" => "relationships#followers", as: "followers"
   end
-
+  resources :groups, except: [:destroy]
+  
+  
   devise_scope :user do
     post 'users/guest_sign_in' , to: 'users/sessions#guest_sign_in'
 
