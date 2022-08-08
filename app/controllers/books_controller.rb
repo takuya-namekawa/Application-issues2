@@ -14,7 +14,7 @@ class BooksController < ApplicationController
     @books = Book.all
 
     @user = current_user
-    
+
      if params[:latest]
      @books = Book.latest
      elsif params[:old]
@@ -63,10 +63,15 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def search_book
+    @book = Book.new
+    @book = Book.search(params[:keyword])
+  end
+
   private
 
   def book_params
-    params.require(:book).permit(:title , :body , :star)
+    params.require(:book).permit(:title , :body , :star , :category)
   end
 
 end

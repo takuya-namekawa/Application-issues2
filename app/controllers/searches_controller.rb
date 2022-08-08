@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def search
   @range = params[:range]
   if @range == "User"
@@ -9,4 +9,11 @@ class SearchesController < ApplicationController
     @books = Book.looks(params[:search],params[:word])
   end
   end
+
+  def search
+    @range = params[:range]
+    @books = Book.looks(params[:search],params[:word])
+  end
+
+
 end
