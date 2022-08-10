@@ -13,9 +13,14 @@
           <% @groups.each do |group| %>
             <tr>
               <%#= attachment_image_tag(group, :image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
-              
+              <td><%= image_tag group.get_profile_image, size: '50x50' %></td>
               <td><%= link_to group.name, group_path(group) %></td>
               <td><%= group.introduction %></td>
+              <td><%= group.user ? group.user.name : "不明" %>が
+                  <%=group.created_at.strftime('%Y/%m/%d') %>に作成</td>
+              <td>
+              <%= group.users.count %>
+              </td>
               <td>
                 <% if group.owner_id == current_user.id %>
                   <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-success" %>

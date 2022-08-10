@@ -11,8 +11,13 @@
 
   <div class="form-group">
     <%= f.label :グループ画像 %>
-    
+    <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
     <%##= f.attachment_field :image, class: "form-control-file" %>
+  </div>
+
+  <div class="from-group">
+    <%=f.label"参加条件"%>
+    <%= f.text_field:status,class:"form-control"%>
   </div>
 
   <div class="form-group">

@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :group_users 
+  has_many:groups, through: :group_users,dependent: :destroy
+  has_many :owned_groups, class_name: "Group"
 
   def self.looks(search, word)
     if search  ==  "perfect_match"
