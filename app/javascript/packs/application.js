@@ -15,6 +15,10 @@ import "../stylesheets/application"
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("trix")
+require("@rails/actiontext")

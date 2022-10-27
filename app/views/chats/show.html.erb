@@ -16,6 +16,14 @@
                   <tr>
                     <th>
                       <p style="text-align: left;"><%= chat.message %></p>
+                      <% if chat.images.attached? %>
+                      <div style="width: 700px;">
+                        <p><strong>Image:</strong></p>
+                        <% chat.images.each do |image| %>
+                          <%= image_tag image, width: 200, height: 200 %>
+                        <% end %>
+                      </div>
+                      <% end %>
                     </th>
                     <th></th>
                   </tr>
@@ -24,6 +32,11 @@
                     <th></th>
                     <th>
                       <p style="text-align: right;"><%= chat.message %></p>
+                     <% if chat.images.attached? %>
+                        <% chat.images.each do |image| %>
+                          <%= image_tag image, width: 200, height: 200 %>
+                        <% end %>
+                      <% end %>
                     </th>
                   </tr>
                 </tbody>
@@ -33,6 +46,7 @@
 
             <%= form_with model: @chat do |f| %>
               <%= f.text_field :message %>
+              <%= f.file_field :images, multiple: true %>
               <%= f.hidden_field :room_id %>
               <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
             <% end %>

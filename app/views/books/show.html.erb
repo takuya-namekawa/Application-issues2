@@ -31,6 +31,16 @@
             <%= @book.user.name %>
             <% end %>
           </td>
+          <td>
+            <% if @book.images.attached? %>
+            <div style="width: 700px;">
+              <p><strong>Image:</strong></p>
+              <% @book.images.each do |image| %>
+                <%= image_tag image, width: 300, height: 200 %>
+              <% end %>
+            </div>
+            <% end %>
+          </td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
 

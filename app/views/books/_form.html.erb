@@ -2,6 +2,7 @@
 
 <%= form_with model:book,local:true do |f| %>
   <div class="form-group">
+    <%= f.file_field :images, multiple: true %>
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control book_title' %>
   </div>
