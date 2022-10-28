@@ -1,5 +1,4 @@
 class Book < ApplicationRecord
-  has_one_attached :images
   belongs_to :user
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

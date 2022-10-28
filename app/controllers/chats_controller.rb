@@ -21,6 +21,7 @@ class ChatsController < ApplicationController
  def create
   @chat = current_user.chats.new(chat_params)
   @chat.save
+  @chat.create_notification_chat!(current_user, @chat.id, @chat.room_id, @chat.room.user_rooms.where.not(user_id: current_user.id).first.user_id)
   redirect_back(fallback_location: root_path)
  end
 

@@ -19,7 +19,14 @@
 
       <main>
         <p id="notice"><%= notice %></p>
-
+        
+      <% if current_user && unchecked_notifications.any? %>
+        <span>
+          <i class="fas fa-circle n-circle"></i>
+        </span>
+      <% end %>
+      <%= link_to "通知一覧", notifications_path %>
+      
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>

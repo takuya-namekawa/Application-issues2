@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "home/about"=>"homes#about"
   get "search" => "searches#search"
   get 'chat/:id', to: 'chats#show', as: 'chat'
-
+  resources :notifications, only: :index
   resources :chats, only: [:create]
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do

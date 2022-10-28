@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :group_users 
   has_many:groups, through: :group_users,dependent: :destroy
   has_many :owned_groups, class_name: "Group"
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   def self.looks(search, word)
     if search  ==  "perfect_match"
